@@ -1,0 +1,161 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth; /* pour adoucir le scroll pour atteindre les encres*/
+}
+
+body{
+    background-color: #fff;
+    min-height: 100vh;
+}
+header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo{
+    height: 60px;
+    line-height: 60px;
+    color: #1c79c0;
+    font-weight: 700;
+    font-size: 2rem;
+    text-decoration: none;
+    cursor: pointer;
+    padding-left: 20px;
+}
+
+#toggle{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background-color: #009fe3;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#toggle::before{
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    background-color: #fff;
+    transform: translateY(-5px);
+    transition: .2s;
+}
+#toggle::after{
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    background-color: #fff;
+    transform: translateY(5px);
+    transition: .2s;
+}
+
+#toggle.active::before{
+    transform:  translateY(5px) rotate(45deg);
+}
+
+#toggle.active::after{
+    transform:  translateY(5px) rotate(-45deg);
+}
+
+#toggle.active{
+    background-color: #ed7902;
+}
+
+#navbar{
+    position: relative;
+    height: 60px;
+    right: 60px;
+    background-color: #fff;
+    transition: .5s;
+    width: 0px;
+    overflow: hidden; /* pour cacher complètement navbar*/
+    /*display: flex;
+    align-items: center;*/
+}
+
+#navbar.active{
+    width: 680px; 
+}
+
+#navbar ul{
+    position: relative;
+    display: flex;
+    flex-direction: row;  
+}
+
+#navbar ul li{
+    list-style: none;
+}
+
+#navbar ul li a{
+    color: #323b43;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    padding: 0 15px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+#navbar ul li a:hover{
+    background-color: #009fe3;
+    color: #fff;
+}
+
+/* contenu */
+
+section{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20vw;
+    color: #f4f7f9;
+    font-weight: 700;
+}
+
+/* Partie responsive design */
+
+@media (max-width: 991px){
+    #navbar{
+        position: fixed;
+        bottom: -100%;
+        right: 0;
+        width: 100%;
+        transition: .5s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #navbar.active{
+        height: calc(100vh - 60px);
+        bottom: 0;
+        width: 100%;
+        /*background-color: #ed7902;*/
+    }
+
+    #navbar ul{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
